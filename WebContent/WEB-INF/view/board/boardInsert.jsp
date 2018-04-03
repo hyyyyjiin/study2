@@ -18,6 +18,7 @@
 		<div class = "row">
 			${message}
 			<a href = "boardList.do"><button type = "submit" class = "btn btn-sm btn-success">목록</button></a>
+			<a href = "boardView.do?bo_no=${board.bo_no}"><button type = "submit" class = "btn btn-sm btn-success">글보기</button></a>
 		</div>	
   </body>
 </html>

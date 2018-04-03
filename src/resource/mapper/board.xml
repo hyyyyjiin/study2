@@ -47,8 +47,9 @@
 						, bo_reg_date	       
 						, bo_mod_date	       
 					FROM tb_board
-		  <include refid="boardListWhereClause"/>
-		  order by bo_no ASC	       
+		  <include refid="boardListWhereClause"/>  <!-- 정렬 후 검색 진행 -->  
+		  
+		  order by bo_no ASC	 <!-- 정렬 후 검색 진행 -->       
 		  <include refid = "common.postPaging"/>
   	</select>
   	<select id = "getBoardCount" parameterType = "BoardSearch" resultType = "int">
@@ -69,6 +70,9 @@
 		WHERE bo_no = #{bo_no} 
   	</select>
   	<insert id = "insertBoard" parameterType = "Board">
+  	<selectKey keyProperty="bo_no" order="BEFORE" resultType="int">
+  		SELECT seq_board.nextval FROM dual 
+  	</selectKey><!-- 쿼리문을 활용하여 먼저 실행 후 값을 bo_no에 넣어준다-->
   		insert into tb_board		                                
 			(	bo_no			                                   
 			  , bo_title		                                   
@@ -80,7 +84,7 @@
 		    , bo_read_cnt	                              
 		    , bo_reg_date	                              
 		    , bo_mod_date )                                    
-		VALUES (seq_board.nextval, #{bo_title}, #{bo_writer}, #{bo_passwd} ,#{bo_email} 
+		VALUES (#{bo_no}, #{bo_title}, #{bo_writer}, #{bo_passwd} ,#{bo_email} <!-- #{bo_no} = seq_board.nextval  -->
 		,#{bo_content} ,#{bo_ip} , 0 ,sysdate, sysdate)
   	</insert>
   	<update id = "updateBoard" parameterType = "Board">

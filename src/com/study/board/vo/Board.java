@@ -1,5 +1,9 @@
 package com.study.board.vo;
 
+import java.util.List;
+
+import com.study.member.vo.Member;
+
 public class Board {
 	private int bo_no;
 	private String bo_title= "";
@@ -11,6 +15,8 @@ public class Board {
 	private int bo_read_cnt;
 	private String bo_reg_date= "";
 	private String bo_mod_date= "";
+	
+	private List<Member> fileList;
 	
 	public int getBo_no() {
 		return bo_no;

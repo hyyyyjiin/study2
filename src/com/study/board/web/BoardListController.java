@@ -35,7 +35,7 @@ public class BoardListController implements IController{
 		boardSearch.setting(boardService.getBoardCount(boardSearch));;
 		List<Board> list = boardService.getBoardList(boardSearch);
 		request.setAttribute("list", list);
-		request.setAttribute("board", boardSearch);  
+		request.setAttribute("search", boardSearch);  
 		String viewPage = "/WEB-INF/view/board/boardList.jsp";
 		return viewPage;
 	}
