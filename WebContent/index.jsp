@@ -37,6 +37,8 @@
 		</div>
 	</div>
 	<div id="footer">
+	
+	
 	  <!--푸터 start -->
 	  <jsp:include page = "/include/footer.jsp" flush="false"/>
 	  <!-- 푸터 end -->
